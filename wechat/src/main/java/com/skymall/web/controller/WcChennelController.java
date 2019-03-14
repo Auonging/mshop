@@ -1,6 +1,5 @@
 package com.skymall.web.controller;
 
-import com.skymall.annotation.IgnoreAuth;
 import com.skymall.service.IWcChannelService;
 import com.skymall.vo.Response;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +15,6 @@ public class WcChennelController {
     @Resource
     private IWcChannelService wcChannelService;
 
-    @IgnoreAuth
     @RequestMapping(value = "query", method = RequestMethod.POST)
     public Response query(){
         

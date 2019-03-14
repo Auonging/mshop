@@ -4,8 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-
-public class Response <T> {
+public class Response {
     static Logger logger = LoggerFactory.getLogger(Response.class);
     private static String SUCCESS = "请求成功";
     private static String ERROR = "请求失败";
@@ -46,13 +45,6 @@ public class Response <T> {
         response.setData(data);
         return response;
     }
-    public static Response error(Integer code, String msg){
-        Response response = new Response();
-        response.setMsg(msg);
-        response.setErrno(code);
-        return response;
-    }
-
 
     public static Response error(){
         Response response = new Response();

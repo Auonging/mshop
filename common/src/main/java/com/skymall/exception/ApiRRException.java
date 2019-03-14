@@ -4,8 +4,7 @@ package com.skymall.exception;
  * 自定义异常
  *
  * @author lipengjun
- * @email 939961241@qq.com
- * @date 2016年10月27日 下午10:11:27
+ *
  */
 public class ApiRRException extends RuntimeException {
     private static final long serialVersionUID = 1L;

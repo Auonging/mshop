@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.skymall.dao.UserCouponMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.skymall.domain.UserCoupon">
+        <id column="id" property="id" />
+        <result column="coupon_id" property="couponId" />
+        <result column="coupon_number" property="couponNumber" />
+        <result column="user_id" property="userId" />
+        <result column="used_time" property="usedTime" />
+        <result column="add_time" property="addTime" />
+        <result column="order_id" property="orderId" />
+        <result column="source_key" property="sourceKey" />
+        <result column="referrer" property="referrer" />
+        <result column="coupon_status" property="couponStatus" />
+    </resultMap>
+
+</mapper>

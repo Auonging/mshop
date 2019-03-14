@@ -30,7 +30,7 @@
         <slf4j-version>1.7.19</slf4j-version>
         <log4j-version>1.2.17</log4j-version>
         <fastjson-version>1.2.30</fastjson-version>
-        <shiro-version>1.3.2</shiro-version>
+        <com.skymall.shiro-version>1.3.2</com.skymall.shiro-version>
         <velocity-version>1.7</velocity-version>
         <velocity-tools-version>2.0</velocity-tools-version>
         <jstl-version>1.2</jstl-version>
@@ -55,6 +55,8 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>mshop</name>
     <description>Demo project for Spring Boot</description>
+
+
 
 
 
@@ -199,14 +201,14 @@
 
 
         <!--<dependency>-->
-            <!--<groupId>org.apache.shiro</groupId>-->
-            <!--<artifactId>shiro-core</artifactId>-->
-            <!--<version>${shiro-version}</version>-->
+            <!--<groupId>org.apache.com.skymall.shiro</groupId>-->
+            <!--<artifactId>com.skymall.shiro-core</artifactId>-->
+            <!--<version>${com.skymall.shiro-version}</version>-->
         <!--</dependency>-->
         <!--<dependency>-->
-            <!--<groupId>org.apache.shiro</groupId>-->
-            <!--<artifactId>shiro-spring</artifactId>-->
-            <!--<version>${shiro-version}</version>-->
+            <!--<groupId>org.apache.com.skymall.shiro</groupId>-->
+            <!--<artifactId>com.skymall.shiro-spring</artifactId>-->
+            <!--<version>${com.skymall.shiro-version}</version>-->
         <!--</dependency>-->
         <!-- Velocity视图所需jar -->
         <!-- 模板引擎 -->
@@ -315,11 +317,14 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.0.7.1</version>
         </dependency>
+
+        <!--shiro配置-->
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>23.0</version>
+            <groupId>org.apache.com.skymall.shiro</groupId>
+            <artifactId>com.skymall.shiro-spring</artifactId>
+            <version>1.3.2</version>
         </dependency>
+
         <!--<dependency>-->
             <!--<groupId>com.baomidou</groupId>-->
             <!--<artifactId>mybatis-plus</artifactId>-->
@@ -338,27 +343,5 @@
             <!--</plugin>-->
         </plugins>
     </build>
-
-    <!--配置环境的profile-->
-    <profiles>
-        <!--dev默认激活，使用idea Spring Boot 配置启动工程，需要dev的配置-->
-        <profile>
-            <id>dev</id>
-            <properties>
-                <environment>dev</environment>
-            </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
-
-        <profile>
-            <id>prod</id>
-            <properties>
-                <environment>prod</environment>
-            </properties>
-        </profile>
-    </profiles>
-
 
 </project>

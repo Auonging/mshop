@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface IWcCatagoryService extends IService<Category> {
 
-    public List<Category> selectAll(CategroyReqDto categroyReqDto);
+    public List<Category> selectAll(CategroyReqDto categoryReqDto);
 
-    public List<Category> selectAllByPage(CategroyReqDto categroyReqDto, Integer offset, Integer limit);
+    public List<Category> selectAllByPage(CategroyReqDto categoryReqDto, Integer offset, Integer limit);
 
     public Category selectById(Integer id);
 

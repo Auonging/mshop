@@ -1,15 +1,16 @@
 package com.skymall.domain;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
-import java.io.Serializable;
-import java.util.Date;
-
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.segments.MergeSegments;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -23,24 +24,24 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("nideshop_user")
-public class User implements Serializable {
+public class User extends Wrapper<User> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    private long id;
 
     private String username;
 
     private String password;
 
-    private Integer gender;
+    private Boolean gender;
 
-    private Date birthday;
+    private LocalDateTime birthday;
 
-    private Date registerTime;
+    private LocalDateTime registerTime;
 
-    private Date lastLoginTime;
+    private LocalDateTime lastLoginTime;
 
     private String lastLoginIp;
 
@@ -56,5 +57,26 @@ public class User implements Serializable {
 
     private String weixinOpenid;
 
+    private Integer status;
 
+
+    @Override
+    public User getEntity() {
+        return this;
+    }
+
+    @Override
+    public MergeSegments getExpression() {
+        return null;
+    }
+
+    @Override
+    public String getCustomSqlSegment() {
+        return null;
+    }
+
+    @Override
+    public String getSqlSegment() {
+        return null;
+    }
 }

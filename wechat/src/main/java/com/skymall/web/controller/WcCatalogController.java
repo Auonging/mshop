@@ -1,6 +1,5 @@
 package com.skymall.web.controller;
 
-import com.skymall.annotation.IgnoreAuth;
 import com.skymall.domain.Category;
 import com.skymall.service.IWcCatagoryService;
 import com.skymall.utils.BeanUtils;
@@ -10,8 +9,6 @@ import com.skymall.web.dto.responseDto.CategroyRspDto;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,15 +20,14 @@ public class WcCatalogController {
     @Resource
     IWcCatagoryService wcCatagoryService;
 
-    @IgnoreAuth
     @RequestMapping(value = "index", method = RequestMethod.POST)
     public Response index(@RequestParam(value = "id", required = false) Integer id,
                           @RequestParam(value = "page", defaultValue = "0") Integer page,
                           @RequestParam(value = "size", defaultValue = "10") Integer size
                         ){
-        CategroyReqDto categroyReqDto = new CategroyReqDto();
-        categroyReqDto.setParentId(0);
-        List<Category> data = wcCatagoryService.selectAllByPage(categroyReqDto, page, size);
+        CategroyReqDto categoryReqDto = new CategroyReqDto();
+        categoryReqDto.setParentId(0);
+        List<Category> data = wcCatagoryService.selectAllByPage(categoryReqDto, page, size);
         //因为传过前端的数据是有子分类的，但是数据库的表设计是没有的，所以要做ResponseDto的封装
         CategroyRspDto currentCategory = new CategroyRspDto();
         //先取得原本数据，后面要加上子分类，然后全部传递给RspDto
@@ -46,9 +42,9 @@ public class WcCatalogController {
         }
         //获取子分类数据
         if(null != category && null != category.getId()) {
-            categroyReqDto.setParentId(category.getId());
+            categoryReqDto.setParentId(category.getId());
             BeanUtils.mapping(category, currentCategory);
-            currentCategory.setSubCategoryList(wcCatagoryService.selectAllByPage(categroyReqDto, page, size));
+            currentCategory.setSubCategoryList(wcCatagoryService.selectAllByPage(categoryReqDto, page, size));
         }
 
         Map<String, Object> map = new HashMap<>();
@@ -57,18 +53,18 @@ public class WcCatalogController {
         return Response.success(map);
     }
 
-    @IgnoreAuth
     @RequestMapping(value = "/current", method = RequestMethod.POST)
     public Response current(@RequestParam(value = "id", required = true) Integer id) {
+
         Category category = wcCatagoryService.selectById(id);
         if(null == category) {
             return Response.success(category);
         }
         //获取子类型数据
         List<Category> categories = wcCatagoryService.selectChildren(category.getId());
-        CategroyRspDto categroyRspDto = new CategroyRspDto();
-        BeanUtils.mapping(category, categroyRspDto);
-        categroyRspDto.setSubCategoryList(categories);
-        return Response.success(categroyRspDto);
+        CategroyRspDto categoryRspDto = new CategroyRspDto();
+        BeanUtils.mapping(category, categoryRspDto);
+        categoryRspDto.setSubCategoryList(categories);
+        return Response.success(categoryRspDto);
     }
 }

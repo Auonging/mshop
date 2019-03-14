@@ -1,12 +1,14 @@
 package com.skymall.domain;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.springframework.stereotype.Component;
+
+import java.io.Serializable;
 
 /**
  * <p>
@@ -16,7 +18,9 @@ import lombok.experimental.Accessors;
  * @author zhaogengren
  * @since 2019-03-06
  */
+
 @Data
+@Component
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("nideshop_category")
@@ -57,6 +61,13 @@ public class Category implements Serializable {
     private Integer type;
 
     private String frontName;
+
+//    /**
+//     * 分页
+//     */
+//    private Integer page;
+//
+//    private Integer size;
 
 
 }

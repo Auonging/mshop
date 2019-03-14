@@ -172,12 +172,12 @@ public class StringUtils {
      * @param methodName 方法名
      * @return prefix className.methodName
      */
-//    public static String genKey(String prefix, String className, String methodName) {
-//        return prefix + "userId_" +
-//                ShiroUtils.getUserId() +
-//                "_" +
-//                className +
-//                "." +
-//                methodName;
-//    }
+    public static String genKey(String prefix, String className, String methodName) {
+        return prefix + "userId_" +
+                ShiroUtils.getUserId() +
+                "_" +
+                className +
+                "." +
+                methodName;
+    }
 }

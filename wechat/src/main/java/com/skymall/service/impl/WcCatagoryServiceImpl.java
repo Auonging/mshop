@@ -10,13 +10,10 @@ import com.skymall.service.AbstractService;
 import com.skymall.service.IWcCatagoryService;
 import com.skymall.utils.WrapperUtil;
 import com.skymall.web.dto.requestDto.CategroyReqDto;
-import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
-
-import static jdk.nashorn.api.scripting.ScriptObjectMirror.wrap;
 
 @Service
 public class WcCatagoryServiceImpl extends ServiceImpl<CategoryMapper, Category> implements IWcCatagoryService {
@@ -26,14 +23,14 @@ public class WcCatagoryServiceImpl extends ServiceImpl<CategoryMapper, Category>
 
     /**
      * 查询指定的列的内容，如果是id,则column为id，  如果多列则为 "column,username, password"
-     * @param categroyReqDto
+     * @param categoryReqDto
      * @param column
      * @return
      */
-    private List<Object> listSelectColumn(CategroyReqDto categroyReqDto, String column){
+    private List<Object> listSelectColumn(CategroyReqDto categoryReqDto, String column){
         QueryWrapper queryWrappr = new QueryWrapper();
         queryWrappr.select("select " + column);
-        WrapperUtil.wrap(queryWrappr, categroyReqDto);
+        WrapperUtil.wrap(queryWrappr, categoryReqDto);
         List list = categoryMapper.selectList(queryWrappr);
         return list;
     }
@@ -54,17 +51,17 @@ public class WcCatagoryServiceImpl extends ServiceImpl<CategoryMapper, Category>
 
 
     @Override
-    public List<Category> selectAll(CategroyReqDto categroyReqDto) {
+    public List<Category> selectAll(CategroyReqDto categoryReqDto) {
         QueryWrapper entityWrapper = new QueryWrapper();
-        WrapperUtil.wrap(entityWrapper, categroyReqDto);
+        WrapperUtil.wrap(entityWrapper, categoryReqDto);
         List<Category> list = categoryMapper.selectList(entityWrapper);
         return list;
     }
     @Override
-    public List<Category> selectAllByPage(CategroyReqDto categroyReqDto, Integer page, Integer size){
+    public List<Category> selectAllByPage(CategroyReqDto categoryReqDto, Integer page, Integer size){
 
         QueryWrapper entityWrapper = new QueryWrapper();
-        WrapperUtil.wrap(entityWrapper, categroyReqDto);
+        WrapperUtil.wrap(entityWrapper, categoryReqDto);
         if(page == null || page == null){
             List<Category> categoryList = categoryMapper.selectList(entityWrapper);
             return categoryList;
