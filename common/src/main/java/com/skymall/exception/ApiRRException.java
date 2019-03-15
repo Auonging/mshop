@@ -1,5 +1,7 @@
 package com.skymall.exception;
 
+import com.skymall.enums.ExceptionEnums;
+
 /**
  * 自定义异常
  *
@@ -15,6 +17,11 @@ public class ApiRRException extends RuntimeException {
     public ApiRRException(String errmsg) {
         super(errmsg);
         this.errmsg = errmsg;
+    }
+
+    public ApiRRException(ExceptionEnums exceptionEnums){
+        this.errmsg = exceptionEnums.getEmsg();
+        this.errno = exceptionEnums.getEcode();
     }
 
     public ApiRRException(String errmsg, Throwable e) {
