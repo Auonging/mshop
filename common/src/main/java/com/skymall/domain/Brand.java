@@ -8,6 +8,7 @@ import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.springframework.stereotype.Component;
 
 /**
  * <p>
@@ -18,6 +19,7 @@ import lombok.experimental.Accessors;
  * @since 2019-03-06
  */
 @Data
+@Component
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("nideshop_brand")

@@ -9,6 +9,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 import java.nio.charset.Charset;
 import java.util.List;
 
+/**
+ * 避免springmvc传递参数的时候会有乱码的情况
+ */
 public class CodeConfig extends WebMvcConfigurationSupport {
     @Bean
     public HttpMessageConverter<String> responseBodyConverter() {

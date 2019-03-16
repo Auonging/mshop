@@ -45,3 +45,11 @@ mybatis-plus:
   server:
     tomcat:
       uri-encoding: UTF-8
+
+
+  jwt:
+    tokenHeader: Authorization
+    secret: mySecret
+    expiration: 604800
+    tokenHead: Bearer
+
